@@ -6,6 +6,6 @@ resource "aws_lambda_function" "c_sharp_lambda" {
   handler       = "BlogFunction::BlogFunction.Function::FunctionHandler"
   source_code_hash = filebase64sha256("BlogFunction.zip")
 
-  runtime = "nodejs12.x"
+  runtime = "dotnet6"
   
 }
