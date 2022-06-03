@@ -13,3 +13,9 @@ resource "aws_api_gateway_resource" "resource" {
 }
 
 
+resource "aws_api_gateway_method" "MyDemoMethod" {
+  rest_api_id   = aws_api_gateway_rest_api.csharp-api.id
+  resource_id   = aws_api_gateway_resource.resource.id
+  http_method   = "GET"
+  authorization = "NONE"
+}
