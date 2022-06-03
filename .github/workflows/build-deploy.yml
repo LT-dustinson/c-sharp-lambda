@@ -35,7 +35,6 @@ jobs:
     - name: HashiCorp - Setup Terraform
       uses: hashicorp/setup-terraform@v2.0.0
     - name: Deploy  
-      uses: actions/github-script@6
       run: |
         terraform init 
         terraform plan
