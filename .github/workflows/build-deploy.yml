@@ -19,9 +19,11 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: |
+        mkdir functions
         cd src/BlogFunction
         dotnet tool install -g Amazon.Lambda.Tools
         dotnet lambda package
+        cp bin/Release/net6.0/BlogFunction.zip ../../functions
     - name: Login to AWS    
       uses: aws-actions/configure-aws-credentials@v1
       with:
