@@ -22,4 +22,10 @@ jobs:
         cd src/BlogFunction
         dotnet tool install -g Amazon.Lambda.Tools
         dotnet lambda package
-
+    - name: Login to AWS    
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        # AWS Access Key ID. This input is required if running in the GitHub hosted environment. It is optional if running in a self-hosted environment that already has AWS credentials, for example on an EC2 instance.
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        # AWS Secret Access Key. This input is required if running in the GitHub hosted environment. It is optional if running in a self-hosted environment that already has AWS credentials, for example on an EC2 instance.
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
