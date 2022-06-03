@@ -30,3 +30,5 @@ jobs:
         # AWS Secret Access Key. This input is required if running in the GitHub hosted environment. It is optional if running in a self-hosted environment that already has AWS credentials, for example on an EC2 instance.
         aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
         aws-region: us-east-1
+    - name: HashiCorp - Setup Terraform
+      uses: hashicorp/setup-terraform@v2.0.0
