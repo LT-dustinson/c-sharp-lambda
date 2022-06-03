@@ -19,7 +19,7 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: |
-        cd src & cd BlogFunction
+        cd src/BlogFunction
         dotnet tool install -g Amazon.Lambda.Tools
         dotnet lambda package
 
