@@ -4,12 +4,6 @@ terraform {
     key    = "state"
     region = "us-east-1"
   }
-  aws = {
-    required_providers {
-    source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
 }
 
 
