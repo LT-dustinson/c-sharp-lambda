@@ -10,6 +10,6 @@ public class Function
     
     public string FunctionHandler(string input, ILambdaContext context)
     {
-        return input.ToUpper();
+        return "Hello World";
     }
 }
