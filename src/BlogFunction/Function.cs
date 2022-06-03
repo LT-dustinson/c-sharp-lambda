@@ -12,7 +12,7 @@ public class Function
         var response = new APIGatewayProxyResponse
         {
             StatusCode = 200,
-            Body = "Hello World"
+            Body = "Hello World"//testing
         };
         return response;
     }
