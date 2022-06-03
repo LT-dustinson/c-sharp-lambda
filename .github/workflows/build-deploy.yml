@@ -3,32 +3,28 @@ name: .NET
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
-    - name: Restore dependencies
+    - name: Build Lambda
       run: |
         cd src/BlogFunction
-        dotnet tool install -g Amazon.Lambda.Tools
+        dotnet tool install -g Amazon.Lambda.Tools 
         dotnet lambda package
         cp bin/Release/net6.0/BlogFunction.zip ../../tf
     - name: Login to AWS    
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        # AWS Access Key ID. This input is required if running in the GitHub hosted environment. It is optional if running in a self-hosted environment that already has AWS credentials, for example on an EC2 instance.
+        # AWS Access Key ID. This input is required if running in the GitHub hosted environment. 
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-        # AWS Secret Access Key. This input is required if running in the GitHub hosted environment. It is optional if running in a self-hosted environment that already has AWS credentials, for example on an EC2 instance.
+        # AWS Secret Access Key. This input is required if running in the GitHub hosted environment. 
         aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
         aws-region: us-east-1
     - name: HashiCorp - Setup Terraform
@@ -38,4 +34,4 @@ jobs:
         cd tf
         terraform init 
         terraform plan
-        terraform apply -auto-approve 
+        terraform apply -auto-approve -var="region=us-east-1" -var="aws_account=033512919333"

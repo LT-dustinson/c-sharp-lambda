@@ -1,4 +1,6 @@
-
+###########################################################
+# Create a lambda definition
+###########################################################
 resource "aws_lambda_function" "c_sharp_lambda" {
   filename      = "BlogFunction.zip"
   function_name = "lambda_function_name"
