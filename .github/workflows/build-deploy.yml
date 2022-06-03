@@ -36,5 +36,6 @@ jobs:
       uses: hashicorp/setup-terraform@v2.0.0
     - name: Deploy  
       run: |
+        cd tf
         terraform init 
         terraform plan
